@@ -7,7 +7,7 @@
  */
 const getScriptPath = () => {
     const scriptEl = document.getElementById('ms2-api');
-    return scriptEl && scriptEl.src && scriptEl.src.substring(0, scriptEl.src.lastIndexOf('/')) || 'https://dev-mapstore.geosolutionsgroup.com/mapstore/dist';
+    return scriptEl && scriptEl.src && scriptEl.src.substring(0, scriptEl.src.lastIndexOf('/')) || '/smgis/dist';
 };
 
 const MapStore2 = require('../jsapi/MapStore2').default.withPlugins(require('./apiPlugins').default, {
@@ -18,4 +18,4 @@ const MapStore2 = require('../jsapi/MapStore2').default.withPlugins(require('./a
     initialState: require('./appConfigEmbedded').default.initialState,
     translations: getScriptPath() + '/../translations'
 });
-window.MapStore2 = MapStore2;
+window[__MAPSTORE_PROJECT_CONFIG__.apiGlobal || 'MapStore2'] = MapStore2;

@@ -155,7 +155,7 @@ function Footer({
             {customFooter ? <HTML msgId={customFooterMessageId} /> : null}
             {!hideMenuItems || menuItems.length === 0 ? <>
                 <div style={{ height: ref?.current?.clientHeight }}></div>
-                <FlexBox ref={ref} component="footer" id="ms-footer" className="ms-footer _padding-xs" centerChildren>
+                {/* <FlexBox ref={ref} component="footer" id="ms-footer" className="ms-footer _padding-xs" centerChildren>
                     <Menu
                         centerChildrenVertically
                         gap="md"
@@ -164,7 +164,7 @@ function Footer({
                         menuItemComponent={FooterMenuItem}
                         items={menuItems}
                     />
-                </FlexBox>
+                </FlexBox> */}
             </> : false}
         </>
     );

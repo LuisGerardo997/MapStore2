@@ -2,7 +2,7 @@ const port = process.env.MAPSTORE_BACKEND_PORT || 8080;
 const protocol = process.env.MAPSTORE_BACKEND_PROTOCOL || "http";
 const host = process.env.MAPSTORE_BACKEND_HOST || "localhost";
 const MAPSTORE_BACKEND_BASE_URL = process.env.MAPSTORE_BACKEND_BASE_URL || (protocol + "://" + host + ":" + port);
-const MAPSTORE_BACKEND_BASE_PATH = process.env.MAPSTORE_BACKEND_BASE_PATH || "/mapstore";
+const MAPSTORE_BACKEND_BASE_PATH = process.env.MAPSTORE_BACKEND_BASE_PATH || "/smgis";
 const MAPSTORE_BACKEND_URL = process.env.MAPSTORE_BACKEND_URL || MAPSTORE_BACKEND_BASE_URL + MAPSTORE_BACKEND_BASE_PATH;
 var matches = MAPSTORE_BACKEND_URL.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
 var domain = matches && matches[1];
@@ -11,21 +11,24 @@ var domain = matches && matches[1];
 const devServer = {
     proxy: {
         '/rest': {
-            target: MAPSTORE_BACKEND_URL,
+            // target: MAPSTORE_BACKEND_URL,
+            target: "http://87.99.156.89:8085/smgis",
             secure: false,
             headers: {
                 host: domain
             }
         },
         '/pdf': {
-            target: MAPSTORE_BACKEND_URL,
+            // target: MAPSTORE_BACKEND_URL,
+            target: "http://87.99.156.89:8085/smgis",
             secure: false,
             headers: {
                 host: domain
             }
         },
         '/proxy': {
-            target: MAPSTORE_BACKEND_URL,
+            // target: MAPSTORE_BACKEND_URL,
+            target: "http://87.99.156.89:8085/smgis",
             secure: false,
             headers: {
                 host: domain
@@ -47,7 +50,7 @@ const devServer = {
         },
         '/docs': {
             target: "http://localhost:8081",
-            pathRewrite: {'/docs': '/mapstore/docs'}
+            pathRewrite: {'/docs': '/smgis/docs'}
         }
     }
 };

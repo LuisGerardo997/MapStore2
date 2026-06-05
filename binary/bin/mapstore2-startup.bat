@@ -44,7 +44,7 @@ rem goto end
 
 
 :run
-  echo Please wait while loading MapStore2...
+  echo Please wait while loading SMGIS...
   echo.
   call "%EXECUTABLE%" start %CMD_LINE_ARGS%
   echo Point your browser to: http://localhost:8080/mapstore
@@ -54,6 +54,6 @@ goto end
 
 
 :end
-  if %error% == 1 echo Startup of MapStore2 was unsuccessful.
+  if %error% == 1 echo Startup of SMGIS was unsuccessful.
   echo.
   pause
